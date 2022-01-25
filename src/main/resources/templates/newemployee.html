@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorator="layout/defaultlayout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee</title>
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <div class="row mt-3">
+            <div class="h1">Add New Employee</div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <div class="container">
+                    <!-- ---------------------------------------------------Mar kkkkkkkkkkkkkkkkkkkkkk -->
+                    <form th:action="@{/employee/add}" method="post" th:object="${employee}">
+                        <div class="mb-3 row">
+                            <label for="name" class="col-sm-3 col-form-label">Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="name" id="name"
+                                    placeholder="Employee Name" th:field="*{name}"> 
+                                    <!-- Markkkkkkkkkkkkk -->
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="salary" class="col-sm-3 col-form-label">Salary</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="salary" id="salary" placeholder="0000.00">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="department" class="col-sm-3 col-form-label">Department</label>
+                            <div class="col-sm-9">
+                                <select class="form-select" th:field="*{department}" required > <!-- required required selectDATA --> 
+                                    <option value="">Select Department</option>
+                                    <option th:each="d : ${departments}" th:value="${d.id}" th:text="${d.name}" ></option>
+                                    <!-- Mark -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="project" class="col-sm-3 col-form-label">Project</label>
+                            <div class="col-sm-9">
+                                <select class="form-select" th:field="*{project}" required > <!-- required selectDATA --> 
+                                    <option value="">Select Project</option>
+                                    <option th:each="p : ${projected}" th:value="${p.id}" th:text="${p.name}" ></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="offset-sm-3 col-sm-10">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

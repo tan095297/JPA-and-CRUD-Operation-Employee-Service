@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorator="layout/defaultlayout">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        
+        <div class="row mt-3">
+            <div class="h1">All Project</div>
+            <div class="col-md-12 mt-2" th:each="t:${projects}">
+            <div class="h3" th:text="${t.name}"></div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>SALARY</th>
+                            <th>DEPARTMENT</th>
+                            <th>PROJECT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="e: ${t.employees}">
+                            <td th:text = "${e.id}"></td>
+                            <td th:text = "${e.name}"></td>
+                            <td th:text = "${e.salary}"></td>
+                            <td th:text = "${e.department.name}"></td>
+                            <td th:text = "${e.project.name}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
